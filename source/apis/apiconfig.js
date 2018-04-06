@@ -4,7 +4,7 @@ export class ApiConfig {
         return "https://cmsdev.app-link.org/alucard263096/feixueblock/api/";
     }
     static GetUploadPath() {
-        return "https://cmsdev.app-link.org/alucard263096/feixueblock/upload/";
+      return "https://alioss.app-link.org/alucard263096/feixueblock/";
     }
     static GetFileUploadAPI() {
         return "https://cmsdev.app-link.org/alucard263096/feixueblock/api/";

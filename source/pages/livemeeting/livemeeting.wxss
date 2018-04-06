@@ -1,1 +1,55 @@
 /* pages/livemeeting/livemeeting.wxss */
+.trailer{
+  width: 100vw;
+  height: 56.7vw;
+}
+.hosterinfo{
+  padding:3vh;
+  border-bottom: 2px solid #f2f2f2;
+}
+.hosterphoto{
+  width: 120rpx;
+  height:120rpx;
+  border-radius: 50%;
+}
+.hostername{
+  font-size: 16px;
+  color:black;
+  margin-top: 7px;
+}
+.hosterintroduce{
+  font-size: 12px;
+  margin-top: 5px;
+}
+.hosterfocus{
+  
+  margin-top: 12px;
+}
+.bottomtabs{
+  height:calc( 100vh - 706rpx );
+}
+.introducepic{
+  width: 100vw;
+}
+.tabs{
+  box-shadow: 0px 2px 2px #888888;
+}
+.tab{
+  text-align: center;
+  font-size: 14px;
+}
+.tab .tabtext{
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.tab .active{
+  border-bottom: 3px solid #1AAD19;
+  color:#1AAD19;
+}
+.commentname{
+  font-size: 12px;
+}
+.commenttext{
+  font-size: 12px;
+  color:black;
+}

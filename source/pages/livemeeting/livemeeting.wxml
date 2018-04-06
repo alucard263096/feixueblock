@@ -1,2 +1,58 @@
 <!--pages/livemeeting/livemeeting.wxml-->
-<text>pages/livemeeting/livemeeting.wxml</text>
+<view wx:if="{{info.status=='A'}}">
+  <view wx:if="{{info.livingstatus=='A'}}" style='line-height:0rpx;'>
+    <video class='trailer' src="{{uploadpath}}livemeeting/{{info.trailer}}" poster="{{uploadpath}}livemeeting/{{info.cover}}" controls></video>
+  </view>
+  <view class='flex-row hosterinfo'>
+    <view style='line-height:0rpx;'>
+      <image class='hosterphoto' src="{{uploadpath}}livemeeting/{{info.hosterphoto}}"></image>
+    </view>
+    <view style='margin-left:15px;' class='flex-1'>
+      <view class='hostername'>{{info.hostername}}</view>
+      <view class='hosterintroduce'>{{info.hosterintroduce}}</view>
+    </view>
+    <view>
+      <button type='primary' size='mini' class='hosterfocus' bindtap='notifyme'>提醒我</button>
+    </view>
+  </view>
+  <view>
+    <view class='flex-row tabs'>
+      <view class='flex-1 tab flex-row ' bindtap='changeTab' id="0">
+        <view class='flex-1'></view>
+        <view class='tabtext {{currenttab==0?"active":""}}'>互动聊天</view>
+        <view class='flex-1'></view>
+      </view>
+      <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="1">
+        <view class='flex-1'></view>
+        <view class='tabtext {{currenttab==1?"active":""}}'>活动介绍</view>
+        <view class='flex-1'></view>
+      </view>
+    </view>
+    <swiper indicator-dots="{{false}}" class='bottomtabs' current='{{currenttab}}' bindchange="changeCurrentTab">
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style='height:85%;padding:2px;background-color:#f2f2f2;' >
+          <view wx:for="{{comments}}" wx:key="k" class='flex-row' style='padding:2px;'>
+            <view class='commentname font-primary' wx:if="{{UserInfo.openid==info.member_openid}}">[主持人] </view>
+            <view class='commentname {{UserInfo.openid==item.member_openid?"font-primary":""}}'>{{item.member_nickName}}：</view>
+            <view class='commenttext'>{{item.comment}}</view>
+          </view>
+        </scroll-view>
+        <form bindsubmit="sendComment" bindreset="formReset">
+          <view class='white-block flex-row' style='padding:5px;'>
+            <view style='flex:4;font-size:14px;'>
+              <input type='text' maxlength='20' placeholder='我也要说点什么' name="comment" value='{{comment}}'></input>
+            </view>
+            <view class='text-center' style='flex:1'>
+              <button type='default' size='mini' formType="submit">发送</button>
+            </view>
+          </view>
+        </form>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style='height:100%;padding:2px;'>
+          <image src="{{uploadpath}}livemeeting/{{info.introducepic}}" class='introducepic' mode='widthFix'></image>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
