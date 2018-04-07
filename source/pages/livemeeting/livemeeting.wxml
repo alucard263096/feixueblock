@@ -3,6 +3,16 @@
   <view wx:if="{{info.livingstatus=='A'}}" style='line-height:0rpx;'>
     <video class='trailer' src="{{uploadpath}}livemeeting/{{info.trailer}}" poster="{{uploadpath}}livemeeting/{{info.cover}}" controls></video>
   </view>
+  <view wx:if="{{info.livingstatus=='B'}}" style='line-height:0rpx;'>
+    <swiper class='trailer' indicator-dots="{{false}}" current='{{currentrtmp}}' bindchange="changeCurrentrtmp">
+      <swiper-item wx:for="{{info.rtmps}}" wx:key="key" wx:for-index="idx">
+        <live-player src="{{item}}" mode="live" muted="{{idx!=currentrtmp}}" bindstatechange="statechange"  binderror="error" class='trailer' orientation="horizontal" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <view wx:if="{{info.livingstatus=='C'}}" style='line-height:0rpx;'>
+    <video class='trailer' src="{{uploadpath}}livemeeting/{{info.recording}}" poster="{{uploadpath}}livemeeting/{{info.cover}}" controls></video>
+  </view>
   <view class='flex-row hosterinfo'>
     <view style='line-height:0rpx;'>
       <image class='hosterphoto' src="{{uploadpath}}livemeeting/{{info.hosterphoto}}"></image>
@@ -11,8 +21,17 @@
       <view class='hostername'>{{info.hostername}}</view>
       <view class='hosterintroduce'>{{info.hosterintroduce}}</view>
     </view>
-    <view>
-      <button type='primary' size='mini' class='hosterfocus' bindtap='notifyme'>提醒我</button>
+    <view wx:if="{{info.livingstatus=='A'}}">
+      <form bindsubmit="sendNotify" wx:if="{{info.notifyme==false}}" report-submit>
+      <button type='primary' size='mini' class='hosterfocus' bindtap='notifyme'  formType="submit" >设置提醒</button>
+      </form>
+      <button wx:if="{{info.notifyme==true}}" type='default' size='mini' class='hosterfocus'  >等待提醒</button>
+    </view>
+    <view wx:if="{{info.livingstatus=='B'}}">
+      <button type='primary' size='mini' class='hosterfocus' open-type='contact' >+ 关注</button>
+    </view>
+    <view wx:if="{{info.livingstatus=='C'}}">
+      <button type='default' size='mini' class='hosterfocus' >已结束</button>
     </view>
   </view>
   <view>
@@ -30,11 +49,11 @@
     </view>
     <swiper indicator-dots="{{false}}" class='bottomtabs' current='{{currenttab}}' bindchange="changeCurrentTab">
       <swiper-item>
-        <scroll-view scroll-y="{{true}}" style='height:85%;padding:2px;background-color:#f2f2f2;' >
-          <view wx:for="{{comments}}" wx:key="k" class='flex-row' style='padding:2px;'>
-            <view class='commentname font-primary' wx:if="{{UserInfo.openid==info.member_openid}}">[主持人] </view>
-            <view class='commentname {{UserInfo.openid==item.member_openid?"font-primary":""}}'>{{item.member_nickName}}：</view>
-            <view class='commenttext'>{{item.comment}}</view>
+        <scroll-view scroll-y="{{true}}" style='height:81%;padding:5px;background-color:#f2f2f2;'>
+          <view wx:for="{{comments}}" wx:key="k" style='padding:2px;margin-top:2px;'>
+            <text class='commentname font-primary' wx:if="{{UserInfo.openid==info.member_openid}}">[主持人] </text>
+            <text class='commentname '>{{item.member_nickName}}：</text>
+            <text class='commenttext'>{{item.comment}}</text>
           </view>
         </scroll-view>
         <form bindsubmit="sendComment" bindreset="formReset">

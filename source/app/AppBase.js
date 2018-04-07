@@ -169,6 +169,7 @@ export class AppBase {
   }
   onPullDownRefresh() {
     console.log("onPullDownRefresh");
+    this.onShow();
   }
   onReachBottom() {
     console.log("onReachBottom");
