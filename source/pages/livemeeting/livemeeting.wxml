@@ -6,7 +6,7 @@
   <view wx:if="{{info.livingstatus=='B'}}" style='line-height:0rpx;'>
     <swiper class='trailer' indicator-dots="{{false}}" current='{{currentrtmp}}' bindchange="changeCurrentrtmp">
       <swiper-item wx:for="{{info.rtmps}}" wx:key="key" wx:for-index="idx">
-        <live-player src="{{item}}" mode="live" muted="{{idx!=currentrtmp}}" bindstatechange="statechange"  binderror="error" class='trailer' orientation="horizontal" />
+        <live-player src="{{item}}" mode="live" muted="{{idx!=currentrtmp}}" autoplay bindstatechange="statechange"  binderror="error" class='trailer'  />
       </swiper-item>
     </swiper>
   </view>
