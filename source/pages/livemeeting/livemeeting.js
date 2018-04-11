@@ -29,13 +29,14 @@ class Content extends AppBase {
       console.log(comment_time_from);
       var liveapi = new LivemeetingApi();
       liveapi.commentlist({ comment_time_from: comment_time_from, livemeeting_id: that.Base.options.id }, (ret) => {
-        if (ret.length > 0) {
-          var n = ret.concat(comments);
+        if (ret.commentlist.length > 0) {
+          var n = ret.commentlist.concat(comments);
           if (n.length > 255) {
             n = n.slice(0, 255);
           }
           that.Base.setMyData({ comments: n });
         }
+        that.Base.setMyData({ viewcount: ret.viewcount, upcount: ret.upcount, commentcount: ret.commentcount, });
       }, false);
     }, 2000);
   }
@@ -80,7 +81,7 @@ class Content extends AppBase {
     var comment = e.detail.value.comment.trim();
     this.Base.setMyData({ comment: "" });
     var liveapi = new LivemeetingApi();
-    liveapi.comment({ livemeeting_id: this.Base.options.id, livemeeting_id: this.Base.options.id, comment: comment }, (ret) => {
+    liveapi.comment({ livemeeting_id: this.Base.options.id, comment: comment }, (ret) => {
       if(ret.code==0){
         wx.showToast({
           title: '发送成功'
@@ -102,6 +103,37 @@ class Content extends AppBase {
       }
     });
   }
+  onHide(){
+    this.Base.setMyData({ info: null });
+  }
+  onShareAppMessage(options){
+    var data=this.Base.getMyData();
+    var info=data.info;
+    return {
+      title: info.title,
+      imageUrl: data.uploadpath + "livemeeting/" + info.sharecover,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  }
+  upThis(){
+    var data = this.Base.getMyData();
+    var info = data.info;
+    if(info.uped==true){
+      return;
+    }
+    info.uped=true;
+    
+    this.Base.setMyData({info:info});
+    var liveapi = new LivemeetingApi();
+    liveapi.up({ livemeeting_id: this.Base.options.id}, (ret) => {
+      
+    },false);
+  }
   changeToFullScreen(){
     liveplayer.requestFullScreen({ direction: 90 });
   }
@@ -112,6 +144,7 @@ class Content extends AppBase {
 
     this.Base.setMyData({ currentrtmp: id, currentrtmpurl: currentrtmpurl });
   }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -128,4 +161,8 @@ body.changeToFullScreen = content.changeToFullScreen;
 body.playLive = content.playLive;
 
 var liveplayer=null;
+//打开这个隐藏就会听不见
+//body.onHide = content.onHide;
+body.onShareAppMessage = content.onShareAppMessage;
+body.upThis = content.upThis;
 Page(body)

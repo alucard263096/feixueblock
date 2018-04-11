@@ -93,3 +93,12 @@
 .bottomtabsmorertmp .topicbar{
   height: 75%;
 }
+.icon{
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+.icontxt{
+  margin-left: 5px;
+  font-size: 16px;
+  margin-top: 5px;

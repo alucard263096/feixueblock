@@ -40,18 +40,19 @@
       </form>
       <button wx:if="{{info.notifyme==true}}" type='default' size='mini' class='hosterfocus'>等待提醒</button>
     </view>
-    <view wx:if="{{info.livingstatus=='B'}}">
-      <button type='primary' size='mini' class='hosterfocus' open-type='contact'>+ 关注</button>
-    </view>
-    <view wx:if="{{info.livingstatus=='C'}}">
-      <button type='default' size='mini' class='hosterfocus'>已结束</button>
+    <view wx:if="{{info.livingstatus=='B'||info.livingstatus=='C'}}" class='flex-row'>
+      <!--<button type='primary' size='mini' class='hosterfocus' open-type='contact' >+ 关注</button>-->
+      <view><image class='icon' style='width:30px;height:30px;' src='{{uploadpath}}resource/viewp1.png'></image></view>
+      <view class='icontxt '>{{viewcount}}</view>
+      <view bindtap='upThis'><image class='icon' src='{{uploadpath}}resource/up{{info.uped==true?"active":""}}.png'></image></view>
+      <view class='icontxt '>{{upcount}}</view>
     </view>
   </view>
   <view>
     <view class='flex-row tabs'>
       <view class='flex-1 tab flex-row ' bindtap='changeTab' id="0">
         <view class='flex-1'></view>
-        <view class='tabtext {{currenttab==0?"active":""}}'>互动聊天</view>
+        <view class='tabtext {{currenttab==0?"active":""}}'>互动聊天({{commentcount}})</view>
         <view class='flex-1'></view>
       </view>
       <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="1">
@@ -64,9 +65,12 @@
       <swiper-item>
         <scroll-view scroll-y="{{true}}" class='topicbar'>
           <view wx:for="{{comments}}" wx:key="k" style='padding:2px;margin-top:2px;'>
-            <text class='commentname font-primary' wx:if="{{UserInfo.openid==info.member_openid}}">[主持人] </text>
+            <text class='commentname font-primary' wx:if="{{item.member_openid==info.member_openid}}">[主持人] </text>
             <text class='commentname '>{{item.member_nickName}}：</text>
             <text class='commenttext'>{{item.comment}}</text>
+          </view>
+          <view wx:if="{{commentcount>255}}">
+          当前评论较多，只为你提供最近的一些热门讨论
           </view>
         </scroll-view>
         <form bindsubmit="sendComment" bindreset="formReset">
@@ -81,7 +85,7 @@
         </form>
       </swiper-item>
       <swiper-item>
-        <scroll-view scroll-y="{{true}}" style='height:100%;padding:2px;'>
+        <scroll-view scroll-y="{{true}}" style='height:100%;line-height:0px;'>
           <image src="{{uploadpath}}livemeeting/{{info.introducepic}}" class='introducepic' mode='widthFix'></image>
         </scroll-view>
       </swiper-item>

@@ -1,14 +1,15 @@
 {
-  "pages":[
+  "pages": [
     "pages/livemeeting/livemeeting",
     "pages/webview/webview",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/logs/TEST"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "飞雪区块链",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
