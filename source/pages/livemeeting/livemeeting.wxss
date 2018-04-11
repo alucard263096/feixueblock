@@ -61,11 +61,27 @@
   color:black;
 }
 
+.play{
+  position: fixed;
+  width: 60rpx;
+  height: 60rpx;
+  top: 45vw;
+  left: 20rpx;
+}
+.infullplay{
+  bottom:20rpx;
+  left: 20rpx;
+}
+
 .fullscreen{
   position: fixed;
   width: 60rpx;
   height: 60rpx;
   top: 45vw;
+  right: 20rpx;
+}
+.infullscreen{
+  bottom:20rpx;
   right: 20rpx;
 }
 .infullscreenvideo{
@@ -102,3 +118,4 @@
   margin-left: 5px;
   font-size: 16px;
   margin-top: 5px;
+}

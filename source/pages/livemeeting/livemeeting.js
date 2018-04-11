@@ -15,7 +15,7 @@ class Content extends AppBase {
     }
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ currenttab: 0, currentrtmp: 0, comments: [], infullscreen: false, currentrtmpurl:"" });
+    this.Base.setMyData({ currenttab: 0, currentrtmp: 0, comments: [], infullscreen: false, currentrtmpurl: "", inplay: true,playcode:0 });
     var that=this;
 
 
@@ -103,9 +103,6 @@ class Content extends AppBase {
       }
     });
   }
-  onHide(){
-    this.Base.setMyData({ info: null });
-  }
   onShareAppMessage(options){
     var data=this.Base.getMyData();
     var info=data.info;
@@ -135,8 +132,19 @@ class Content extends AppBase {
     },false);
   }
   changeToFullScreen(){
-    liveplayer.requestFullScreen({ direction: 90 });
+    //console.log(liveplayer);
+    var infullscreen = this.Base.getMyData().infullscreen;
+    if(infullscreen){
+      liveplayer.exitFullScreen();
+    }else{
+      liveplayer.requestFullScreen({ direction: 90 });
+    }
   }
+
+  bindfullscreenchange(e){
+    this.Base.setMyData({ infullscreen: e.detail.fullScreen});
+  }
+
   playLive(e){
     var id=Number(e.currentTarget.id);
     console.log(id);
@@ -145,6 +153,27 @@ class Content extends AppBase {
     this.Base.setMyData({ currentrtmp: id, currentrtmpurl: currentrtmpurl });
   }
 
+
+
+  bindstatechange(e){
+
+    var playcode = this.Base.getMyData().playcode;
+    if (playcode != e.detail.code){
+      
+    }
+    this.Base.setMyData({  playcode: e.detail.code });
+  }
+  changePlayStatus() {
+    
+    var inplay = this.Base.getMyData().inplay;
+    if (inplay) {
+      liveplayer.stop();
+      this.Base.setMyData({ inplay: false });
+    } else {
+      liveplayer.play();
+      this.Base.setMyData({ inplay: true });
+    }
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -163,6 +192,9 @@ body.playLive = content.playLive;
 var liveplayer=null;
 //打开这个隐藏就会听不见
 //body.onHide = content.onHide;
-body.onShareAppMessage = content.onShareAppMessage;
-body.upThis = content.upThis;
+body.onShareAppMessage = content.onShareAppMessage; 
+body.upThis = content.upThis; 
+body.bindfullscreenchange = content.bindfullscreenchange; 
+body.bindstatechange = content.bindstatechange;
+body.changePlayStatus = content.changePlayStatus;
 Page(body)

@@ -3,8 +3,7 @@
     "pages/livemeeting/livemeeting",
     "pages/webview/webview",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/logs/TEST"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

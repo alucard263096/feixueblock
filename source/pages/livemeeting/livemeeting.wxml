@@ -5,10 +5,10 @@
   </view>
   <view wx:if="{{info.livingstatus=='B'}}" style='line-height:0rpx;'>
     <view wx:if="{{info.rtmps.length==1}}">
-      <live-player id="liveplayer" wx:for="{{info.rtmps}}" wx:key="key" wx:for-index="idx" src="{{item}}" mode="live" muted="{{idx!=currentrtmp}}" autoplay bindstatechange="statechange" binderror="error" class='trailer' />
+      <live-player id="liveplayer" wx:for="{{info.rtmps}}" wx:key="key" wx:for-index="idx" src="{{item}}" mode="live" muted="{{idx!=currentrtmp}}" background-mute="{{false}}" autoplay  binderror="error" class='trailer' bindfullscreenchange="bindfullscreenchange" bindstatechange="bindstatechange" />
     </view>
     <view class='trailer' wx:if="{{info.rtmps.length>1}}">
-      <live-player id="liveplayer"  src="{{currentrtmpurl}}" mode="live"  autoplay bindstatechange="statechange"  binderror="error" class='trailer'  />
+      <live-player id="liveplayer"  src="{{currentrtmpurl}}" mode="live"  autoplay  binderror="error" class='trailer' bindfullscreenchange="bindfullscreenchange" background-mute="{{false}}" bindstatechange="bindstatechange"  />
       <view class='flex-row mostrtmp'>
         <view wx:for="{{info.rtmps}}" wx:key="key" wx:for-index="idx" bindtap='playLive' id="{{idx}}">
       <live-player  src="{{item}}" muted="{{true}}" mode="live"  autoplay bindstatechange="statechange"  binderror="error" class='littleplayer' wx:if="{{currentrtmp!=idx}}"   />
@@ -21,7 +21,8 @@
         <live-player  src="{{item}}" mode="live" muted="{{idx!=currentrtmp}}" autoplay bindstatechange="statechange"  binderror="error" class='trailer {{infullscreen==true&&idx==currentrtmp?"infullscreenvideo":""}}"'  />
       </swiper-item>
     </swiper>-->
-    <cover-image class='fullscreen' src='{{uploadpath}}resource/fullscreen.png' bindtap='changeToFullScreen'></cover-image>
+    <cover-image class='play {{infullscreen?"infullplay":""}}' src='{{uploadpath}}resource/{{inplay==true?"stop":"play"}}.png' bindtap='changePlayStatus'  ></cover-image>
+    <cover-image class='fullscreen {{infullscreen?"infullscreen":""}}' src='{{uploadpath}}resource/fullscreen.png' bindtap='changeToFullScreen' ></cover-image>
   </view>
   <view wx:if="{{info.livingstatus=='C'}}" style='line-height:0rpx;'>
     <video class='trailer' src="{{uploadpath}}livemeeting/{{info.recording}}" poster="{{uploadpath}}livemeeting/{{info.cover}}" controls></video>
@@ -42,7 +43,7 @@
     </view>
     <view wx:if="{{info.livingstatus=='B'||info.livingstatus=='C'}}" class='flex-row'>
       <!--<button type='primary' size='mini' class='hosterfocus' open-type='contact' >+ 关注</button>-->
-      <view><image class='icon' style='width:30px;height:30px;' src='{{uploadpath}}resource/viewp1.png'></image></view>
+      <view><image class='icon'  src='{{uploadpath}}resource/viewp1.png'></image></view>
       <view class='icontxt '>{{viewcount}}</view>
       <view bindtap='upThis'><image class='icon' src='{{uploadpath}}resource/up{{info.uped==true?"active":""}}.png'></image></view>
       <view class='icontxt '>{{upcount}}</view>
@@ -57,7 +58,7 @@
       </view>
       <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="1">
         <view class='flex-1'></view>
-        <view class='tabtext {{currenttab==1?"active":""}}'>活动介绍</view>
+        <view class='tabtext {{currenttab==1?"active":""}}'>活动介绍{{playcode}}</view>
         <view class='flex-1'></view>
       </view>
     </view>
