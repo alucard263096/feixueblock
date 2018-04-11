@@ -29,10 +29,10 @@
     </view>
     <view wx:if="{{info.livingstatus=='B'||info.livingstatus=='C'}}" class='flex-row'>
       <!--<button type='primary' size='mini' class='hosterfocus' open-type='contact' >+ 关注</button>-->
-      <view><image class='icon' src='{{uploadpath}}resource/viewp.png'></image></view>
-      <view class='icontxt font-primary'>{{viewcount}}</view>
+      <view><image class='icon' style='width:30px;height:30px;' src='{{uploadpath}}resource/viewp1.png'></image></view>
+      <view class='icontxt '>{{viewcount}}</view>
       <view bindtap='upThis'><image class='icon' src='{{uploadpath}}resource/up{{info.uped==true?"active":""}}.png'></image></view>
-      <view class='icontxt font-primary'>{{upcount}}</view>
+      <view class='icontxt '>{{upcount}}</view>
     </view>
   </view>
   <view>
