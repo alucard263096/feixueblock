@@ -15,7 +15,7 @@ class Content extends AppBase {
     }
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ currenttab: 0,currentrtmp:0,comments:[] });
+    this.Base.setMyData({ currenttab: 0, currentrtmp: 0, comments: [], infullscreen: false, currentrtmpurl:"" });
     var that=this;
 
 
@@ -48,6 +48,11 @@ class Content extends AppBase {
       wx.setNavigationBarTitle({
         title: ret.title
       });
+      liveplayer=wx.createLivePlayerContext("liveplayer", this);
+      var currentrtmpurl = that.Base.getMyData().currentrtmpurl;
+      if (ret.rtmps.length>0&&currentrtmpurl==""){
+        this.Base.setMyData({ currentrtmpurl: ret.rtmps[0] });
+      }
     });
   }
   changeCurrentTab(e){
@@ -92,10 +97,20 @@ class Content extends AppBase {
     liveapi.sendnotify({ livemeeting_id: this.Base.options.id, formid: formid }, (ret) => {
       if(ret.code==0){
         var info = this.Base.getMyData().info;
-        info.notifyme=true;
-        this.Base.setMyData({info:info});
+        info.notifyme = true;
+        this.Base.setMyData({ info: info });
       }
     });
+  }
+  changeToFullScreen(){
+    liveplayer.requestFullScreen({ direction: 90 });
+  }
+  playLive(e){
+    var id=Number(e.currentTarget.id);
+    console.log(id);
+    var currentrtmpurl = this.Base.getMyData().info.rtmps[id];
+
+    this.Base.setMyData({ currentrtmp: id, currentrtmpurl: currentrtmpurl });
   }
 }
 var content = new Content();
@@ -107,6 +122,10 @@ body.changeTab = content.changeTab;
 body.gotoFlowurl = content.gotoFlowurl; 
 body.sendComment = content.sendComment;
 body.changeCurrentrtmp = content.changeCurrentrtmp; 
-body.sendNotify = content.sendNotify;
-body.focusus = content.focusus;
+body.sendNotify = content.sendNotify; 
+body.focusus = content.focusus; 
+body.changeToFullScreen = content.changeToFullScreen;
+body.playLive = content.playLive;
+
+var liveplayer=null;
 Page(body)
