@@ -53,3 +53,12 @@
   font-size: 12px;
   color:black;
 }
+.icon{
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+.icontxt{
+  margin-left: 5px;
+  font-size: 16px;
+}
