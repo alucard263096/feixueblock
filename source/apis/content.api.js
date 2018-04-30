@@ -10,7 +10,7 @@ import { ApiConfig } from 'apiconfig';
 export class ContentApi
 {
 			//获取页面文字内容
-				get(json, callback, showLoading = true) {
+				geta(json, callback, showLoading = true) {
 
 					if (showLoading)
 					ApiConfig.ShowLoading();

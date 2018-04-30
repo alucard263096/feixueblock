@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/member/member",
     "pages/livemeeting/livemeeting",
+    "pages/content/content",
     "pages/webview/webview",
     "pages/index/index",
     "pages/logs/logs"

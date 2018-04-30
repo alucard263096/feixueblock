@@ -1,6 +1,6 @@
 /**app.wxss**/
 page{
-  background: white;
+  background: #fcfcfc;
 }
 view{
   color:#666;
@@ -25,5 +25,13 @@ view{
 }
 
 .font-primary{
-  color:#1AAD19;
+  color:#BF8436;
+}
+button[type=primary]{
+  
+  background-color: #BF8436;
+}
+button.button-hover[type=primary]{
+  
+  background-color: #D19F5D;
 }

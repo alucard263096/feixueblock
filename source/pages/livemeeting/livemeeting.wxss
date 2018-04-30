@@ -12,28 +12,29 @@
   margin-top: 13.7vw;
 }
 .hosterphoto{
-  width: 120rpx;
-  height:120rpx;
+  width: 80rpx;
+  height:80rpx;
   border-radius: 50%;
 }
 .hostername{
-  font-size: 16px;
+  font-size: 14px;
   color:black;
-  margin-top: 7px;
+  margin-top: 3px;
 }
 .hosterintroduce{
-  font-size: 12px;
+  font-size: 10px;
   margin-top: 5px;
+  color:#999;
 }
 .hosterfocus{
   
-  margin-top: 12px;
+  margin-top: 3px;
 }
 .bottomtabs{
-  height:calc( 100vh - 706rpx );
+  height:calc( 100vh - 712rpx );
 }
 .bottomtabsmorertmp{
-  height:calc( 100vh - 706rpx - 13.6vw );
+  height:calc( 100vh - 712rpx - 13.6vw );
 }
 .introducepic{
   width: 100vw;
@@ -43,15 +44,15 @@
 }
 .tab{
   text-align: center;
-  font-size: 14px;
+  font-size: 22rpx;
 }
 .tab .tabtext{
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top:4px;
+  padding-bottom:4px;
 }
 .tab .active{
-  border-bottom: 3px solid #1AAD19;
-  color:#1AAD19;
+  border-bottom: 3px solid #BF8436;
+  color:#BF8436;
 }
 .commentname{
   font-size: 12px;
@@ -110,12 +111,55 @@
   height: 75%;
 }
 .icon{
-  width: 25px;
-  height: 25px;
+  width: 16px;
+  height: 16px;
   margin-left: 10px;
 }
 .icontxt{
   margin-left: 5px;
-  font-size: 16px;
-  margin-top: 5px;
+  font-size: 12px;
+  margin-top: 6px;
+  color:#BF8436;
+  line-height: 0rpx;
+}
+
+.video_cover{
+  width: 140rpx;
+}
+.idt{
+  height: 2rpx;
+  background: #f2f2f2;
+}
+.video_title{
+  font-size: 32rpx;
+}
+.video_bottom_info{
+  margin-top: 5rpx;
+}
+.video_clock{
+  width:28rpx;
+  height: 32rpx;
+}
+.video_playtime{
+  font-size: 24rpx;
+  margin-top: 6rpx;
+  margin-left: 6rpx;
+  color:#999;
+}
+.video_click{
+  background-color: #f4f4f4;
+}
+.video_playnow{
+  font-size: 28rpx;
+}
+.avatar{
+  width: 50rpx;
+  height:50rpx;
+  border-radius: 50rpx;
+}
+
+.nickname{
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  margin-left: 10rpx;
 }

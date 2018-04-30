@@ -3,6 +3,7 @@ import { AppBase } from "../../app/AppBase";
 import { ApiConfig } from "../../apis/apiconfig";
 var WxParse = require('../../wxParse/wxParse');
 import { LivemeetingApi } from '../../apis/livemeeting.api';
+import { MemberApi } from '../../apis/member.api';
 
 class Content extends AppBase {
   constructor() {
@@ -11,15 +12,18 @@ class Content extends AppBase {
   onLoad(options) {
     //options.id=1;
     if(options.id==undefined){
-      options.id=1;
+      //options.id=1;
     }
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ currenttab: 0, currentrtmp: 0, comments: [], infullscreen: false, currentrtmpurl: "", inplay: true,playcode:0 });
+    this.Base.setMyData({ currenttab: 0, currentrtmp: 0, comments: [], infullscreen: false, currentrtmpurl: "", inplay: true,playcode:0,info:null,currentvideo:null });
     var that=this;
 
 
     setInterval(function () {
+      if (that.Base.options.id==undefined){
+        return;
+      }
       var comments = that.Base.getMyData().comments;
       var comment_time_from = "1970-1-1";
       if (comments.length > 0) {
@@ -45,14 +49,25 @@ class Content extends AppBase {
     super.onShow();
     var liveapi = new LivemeetingApi();
     liveapi.info({id:this.Base.options.id},(ret)=>{
+      this.Base.options.id=ret.id;
       this.Base.setMyData({info:ret});
       wx.setNavigationBarTitle({
         title: ret.title
       });
       liveplayer=wx.createLivePlayerContext("liveplayer", this);
+      
       var currentrtmpurl = that.Base.getMyData().currentrtmpurl;
       if (ret.rtmps.length>0&&currentrtmpurl==""){
         this.Base.setMyData({ currentrtmpurl: ret.rtmps[0] });
+      }
+      if(ret.videos!=undefined){
+        this.Base.setMyData({ currentvideo: ret.videos[0] });
+      }
+    });
+    var memberApi =new MemberApi();
+    memberApi.info({},(memberinfo)=>{
+      if(memberinfo!=null){
+        this.Base.setMyData({ memberinfo: memberinfo });
       }
     });
   }
@@ -174,6 +189,12 @@ class Content extends AppBase {
       this.Base.setMyData({ inplay: true });
     }
   }
+  playVideo(e){
+    var idx=e.currentTarget.id;
+    var info=this.Base.getMyData().info;
+    var videos=info.videos;
+    this.Base.setMyData({ currentvideo: videos[idx] });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -195,6 +216,7 @@ var liveplayer=null;
 body.onShareAppMessage = content.onShareAppMessage; 
 body.upThis = content.upThis; 
 body.bindfullscreenchange = content.bindfullscreenchange; 
-body.bindstatechange = content.bindstatechange;
+body.bindstatechange = content.bindstatechange; 
 body.changePlayStatus = content.changePlayStatus;
+body.playVideo = content.playVideo;
 Page(body)

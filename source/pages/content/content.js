@@ -18,7 +18,7 @@ class Content extends AppBase {
     var contentapi = new ContentApi();
     var that = this;
     contentapi.geta({ keycode: keycode}, function (data) {
-      if (data == false) {
+      if (data == null) {
         WxParse.wxParse('content', 'html', "请去后台设置文字内容", that, 10);
         that.setData({ title: keycode });
       }else{
