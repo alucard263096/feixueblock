@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/member/member",
     "pages/livemeeting/livemeeting",
+    "pages/browsehistory/browsehistory",
+    "pages/favorite/favorite",
+    "pages/member/member",
     "pages/content/content",
     "pages/webview/webview",
     "pages/index/index",
