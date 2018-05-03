@@ -83,7 +83,7 @@ export class AppBase {
     console.log("yeah!");
   }
   onLoad(options) {
-    ApiConfig.SetUnicode("test");
+    ApiConfig.SetUnicode("sxyzx");
 
     this.Base.options = options;
     console.log(options);

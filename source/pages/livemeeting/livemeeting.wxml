@@ -1,13 +1,13 @@
 <!--pages/livemeeting/livemeeting.wxml-->
 <view wx:if="{{info!=null}}">
 
-  <navigator url='/pages/member/member' class='white-block flex-row' style='padding:8rpx;'>
-    <view>
+  <view class='white-block flex-row' style='padding:8rpx;'>
+    <navigator url='/pages/member/member' >
       <image class='avatar' src='{{UserInfo.avatarUrl}}'></image>
-    </view>
-    <view class='nickname'>
+    </navigator>
+    <navigator class='nickname' url='/pages/member/member' >
       {{UserInfo.nickName}}
-    </view>
+    </navigator>
 
     <view wx:if="{{info.livingstatus=='B'||info.livingstatus=='C'}}" class='flex-row righttop'>
       <!--<button type='primary' size='mini' class='hosterfocus' open-type='contact' >+ 关注</button>-->
@@ -20,7 +20,7 @@
       </view>
       <view bindtap='upThis' class='icontxt '>{{upcount}}</view>
     </view>
-  </navigator>
+  </view>
 
   <view wx:if="{{info.status=='A'}}">
     <view wx:if="{{info.livingstatus=='A'}}" style='line-height:0rpx;'>
