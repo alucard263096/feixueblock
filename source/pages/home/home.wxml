@@ -1,0 +1,82 @@
+<!--pages/home/home.wxml-->
+<view class='flex-row tabs'>
+  <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
+    <view class='flex-1'></view>
+    <view class='tabtext {{currenttab==0?"active":""}}'>直播</view>
+    <view class='flex-1'></view>
+  </view>
+
+  <view class='flex-1 tab flex-row ' bindtap='changeTab' id="1">
+    <view class='flex-1'></view>
+    <view class='tabtext {{currenttab==1?"active":""}}'>推荐</view>
+    <view class='flex-1'></view>
+  </view>
+
+  <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="2">
+    <view class='flex-1'></view>
+    <view class='tabtext {{currenttab==2?"active":""}}'>最新</view>
+    <view class='flex-1'></view>
+  </view>
+
+  <view class='flex-1 tab flex-row ' bindtap='changeTab' id="3">
+    <view class='flex-1'></view>
+    <view class='tabtext {{currenttab==3?"active":""}}'>热门</view>
+    <view class='flex-1'></view>
+  </view>
+
+  <view class='flex-1 tab flex-row ' bindtap='changeTab' id="4">
+    <view class='flex-1'></view>
+    <view class='tabtext {{currenttab==4?"active":""}}'>分类</view>
+    <view class='flex-1'></view>
+  </view>
+</view>
+
+
+<swiper indicator-dots="{{false}}" class='bottomtabs ' current='{{currenttab}}' bindchange="changeCurrentTab" class="maintab">
+  <swiper-item>
+
+
+
+
+
+  </swiper-item>
+  <swiper-item>
+
+    <swiper autoplay='true' indicator-dots='true' indicator-active-color="#BF8436">
+      <swiper-item wx:for="{{bannerlist}}" wx:key="bannerlist">
+        <image class='indexbanner' src='{{uploadpath}}banner/{{item.pic}}'></image>
+      </swiper-item>
+    </swiper>
+
+    <scroll-view scroll-x style="width: 100%;background:red">
+      <view class='flex-row white-block'>
+        <view class='category-item text-center' wx:for="{{categories}}" wx:key="categories">
+          <view>
+            <image src="{{uploadpath}}category/{{item.icon}}"></image>
+          </view>
+          <view>
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class='subbar flex-row'>
+      <view class='firsttab'></view>
+      <view class='secondtab'>热门推荐</view>
+      <view class='thirdtab flex-1 text-right'>热门推荐</view>
+    </view>
+    <view>
+      <view wx:for="{{recommlivemeeting}}" wx:key="k"></view>
+    </view>
+
+
+
+  </swiper-item>
+  <swiper-item>3
+  </swiper-item>
+  <swiper-item>4
+  </swiper-item>
+  <swiper-item>5
+  </swiper-item>
+</swiper>

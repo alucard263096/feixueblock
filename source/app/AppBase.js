@@ -143,6 +143,7 @@ export class AppBase {
 
                 console.log(AppBase.UserInfo);
                 that.Base.setMyData({ UserInfo: AppBase.UserInfo });
+                that.Base.SuperShowed=true;
                 that.onShow();
               });
             },

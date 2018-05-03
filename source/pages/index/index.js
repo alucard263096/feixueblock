@@ -13,10 +13,17 @@ class Content extends AppBase {
   }
   onShow() {
     var that = this;
+    if (that.Base.SuperShowed != true) {
+      super.onShow();
+    }
+    if (that.Base.SuperShowed == true) {
+
+    }
   }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
-body.onLoad = content.onLoad;
+body.onLoad = content.onLoad; 
 body.onShow = content.onShow;
 Page(body)

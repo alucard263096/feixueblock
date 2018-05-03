@@ -1,0 +1,37 @@
+/* pages/home/home.wxss */
+
+.tabs{
+  box-shadow: 0rpx 2rpx 2rpx #f2f2f2;
+  background: white;
+  margin-bottom: 2rpx;
+}
+.tab{
+  text-align: center;
+  font-size: 32rpx;
+}
+.tab .tabtext{
+  padding-top:18rpx;
+  padding-bottom:18rpx;
+}
+.tab .active{
+  border-bottom: 6rpx solid #BF8436;
+  color:#BF8436;
+}
+.indexbanner{
+  width:100vw;
+  height: 50vw;
+}
+.maintab{
+  height:calc( 100vh - 86rpx );
+}
+.category-item {
+  font-size: 22rpx;
+  padding-bottom:15rpx;
+}
+.category-item image{
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50%;
+  margin:20rpx;
+  margin-bottom:5rpx;
+}

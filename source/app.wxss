@@ -1,6 +1,6 @@
 /**app.wxss**/
 page{
-  background: #fcfcfc;
+  background: #f9f9f9;
 }
 view{
   color:#666;
@@ -34,4 +34,30 @@ button[type=primary]{
 button.button-hover[type=primary]{
   
   background-color: #D19F5D;
+}
+
+.subbar{
+  padding:20rpx;
+  background: white; 
+  margin-top:16rpx;
+  border:2rpx solid #f2f2f2;
+}
+.subbar .firsttab{
+  width:8rpx;
+  height: 32rpx;
+  background: #BF8436;
+  margin-left: 10rpx;
+}
+.subbar .secondtab{
+  font-size: 30rpx;
+  margin-top: 16rpx;
+  line-height: 0rpx;
+  color:black;
+  font-weight: 80%;
+  margin-left: 20rpx;
+  letter-spacing:2rpx;
+
+}
+.subbar .thirdtab{
+  font-size: 24rpx;
 }

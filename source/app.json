@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/service/service",
+    "pages/aboutus/aboutus",
     "pages/livemeeting/livemeeting",
     "pages/browsehistory/browsehistory",
     "pages/favorite/favorite",
@@ -14,5 +17,37 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "飞雪区块链",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "selectedColor": "#BF8436",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "项目",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-a.png"
+      },
+      {
+        "text": "服务",
+        "pagePath": "pages/service/service",
+        "iconPath": "images/icons/service.png",
+        "selectedIconPath": "images/icons/service-a.png"
+      },
+      {
+        "text": "关于我们",
+        "pagePath": "pages/aboutus/aboutus",
+        "iconPath": "images/icons/link.png",
+        "selectedIconPath": "images/icons/link-a.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/member/member",
+        "iconPath": "images/icons/user.png",
+        "selectedIconPath": "images/icons/user-a.png"
+      }
+    ]
   }
 }
