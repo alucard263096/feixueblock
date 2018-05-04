@@ -35,3 +35,9 @@
   margin:20rpx;
   margin-bottom:5rpx;
 }
+
+.pubdate{
+  text-align: center;
+  font-size: 24rpx;
+  padding:10rpx;
+}

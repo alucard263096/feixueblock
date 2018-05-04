@@ -154,6 +154,7 @@ export class AppBase {
 
         }
       })
+      return false;
     } else {
       if (that.setMyData != undefined) {
         that.setMyData({ UserInfo: AppBase.UserInfo });
@@ -162,6 +163,7 @@ export class AppBase {
       }
     }
     this.Base.getAddress();
+    return true;
   }
   onHide() {
     console.log("onHide");

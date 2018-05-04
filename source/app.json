@@ -7,6 +7,7 @@
     "pages/browsehistory/browsehistory",
     "pages/favorite/favorite",
     "pages/member/member",
+    "pages/memberinfo/memberinfo",
     "pages/content/content",
     "pages/webview/webview",
     "pages/index/index",
@@ -44,7 +45,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/member/member",
+        "pagePath": "pages/memberinfo/memberinfo",
         "iconPath": "images/icons/user.png",
         "selectedIconPath": "images/icons/user-a.png"
       }

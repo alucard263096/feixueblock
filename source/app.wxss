@@ -53,11 +53,73 @@ button.button-hover[type=primary]{
   margin-top: 16rpx;
   line-height: 0rpx;
   color:black;
-  font-weight: 80%;
+  font-weight: 550;
   margin-left: 20rpx;
   letter-spacing:2rpx;
 
 }
 .subbar .thirdtab{
   font-size: 24rpx;
+  color:#999;
+}
+.bottom-block{
+  height:30rpx;
+}
+
+
+.rowitem{
+ padding:24rpx; 
+  border-bottom:2rpx solid #f2f2f2;
+}
+.rowitem .imgcover{
+  height: 120rpx;
+  width: 120rpx;
+  box-shadow: 2rpx 2rpx 1rpx #888888;
+}
+.rowitem .headtitle{
+  padding-left:20rpx;
+  color:black;
+  font-size: 32rpx;
+  font-weight: 550;
+}
+.rowitem .headdescription{
+  padding-left:20rpx;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  color:#999;
+}
+.rowitem .headdescriptionicon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.rowitem .headdescriptionicontext{
+  width: 100rpx;
+  margin-right: 10rpx;
+  color:#999;
+}
+
+.blockrow{
+ padding:15rpx; 
+ border-bottom:2rpx solid #f2f2f2;
+ background: white;
+}
+.blockitem{
+  width: 200rpx;
+  margin-left: 20rpx;
+}
+.blockitem .imgcover{
+  height: 180rpx;
+  width: 180rpx;
+  box-shadow: 2rpx 2rpx 1rpx #888888;
+}
+.blockitem .headtitle{
+  color:black;
+  font-size: 28rpx;
+  font-weight: 550;
+}
+.blockitem .headdescription{
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  color:#999;
 }

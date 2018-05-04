@@ -20,7 +20,7 @@ class Content extends AppBase {
     var that=this;
 
 
-    setInterval(function () {
+    commenttimer=setInterval(function () {
       if (that.Base.options.id==undefined){
         return;
       }
@@ -47,30 +47,32 @@ class Content extends AppBase {
   }
   onShow() {
     var that = this;
-    super.onShow();
-    var liveapi = new LivemeetingApi();
-    liveapi.info({id:this.Base.options.id},(ret)=>{
-      this.Base.options.id=ret.id;
-      this.Base.setMyData({info:ret});
-      wx.setNavigationBarTitle({
-        title: ret.title
+    if (super.onShow() == true) {
+
+      var liveapi = new LivemeetingApi();
+      liveapi.info({id:this.Base.options.id},(ret)=>{
+        this.Base.options.id=ret.id;
+        this.Base.setMyData({info:ret});
+        wx.setNavigationBarTitle({
+          title: ret.title
+        });
+        liveplayer=wx.createLivePlayerContext("liveplayer", this);
+        
+        var currentrtmpurl = that.Base.getMyData().currentrtmpurl;
+        if (ret.rtmps.length>0&&currentrtmpurl==""){
+          this.Base.setMyData({ currentrtmpurl: ret.rtmps[0] });
+        }
+        if(ret.videos!=undefined){
+          this.Base.setMyData({ currentvideo: ret.videos[0] });
+        }
       });
-      liveplayer=wx.createLivePlayerContext("liveplayer", this);
-      
-      var currentrtmpurl = that.Base.getMyData().currentrtmpurl;
-      if (ret.rtmps.length>0&&currentrtmpurl==""){
-        this.Base.setMyData({ currentrtmpurl: ret.rtmps[0] });
-      }
-      if(ret.videos!=undefined){
-        this.Base.setMyData({ currentvideo: ret.videos[0] });
-      }
-    });
-    var memberApi =new MemberApi();
-    memberApi.info({},(memberinfo)=>{
-      if(memberinfo!=null){
-        this.Base.setMyData({ memberinfo: memberinfo });
-      }
-    });
+      var memberApi =new MemberApi();
+      memberApi.info({},(memberinfo)=>{
+        if(memberinfo!=null){
+          this.Base.setMyData({ memberinfo: memberinfo });
+        }
+      });
+    }
   }
   changeCurrentTab(e){
     console.log(e);
@@ -205,6 +207,11 @@ class Content extends AppBase {
       info.favorited = !info.favorited;
       this.Base.setMyData({ info: info });
     });
+    
+  }
+
+  onUnload() {
+    clearInterval(commenttimer);
   }
 }
 
@@ -235,6 +242,10 @@ body.upThis = content.upThis;
 body.bindfullscreenchange = content.bindfullscreenchange; 
 body.bindstatechange = content.bindstatechange; 
 body.changePlayStatus = content.changePlayStatus;
-body.playVideo = content.playVideo;
+body.playVideo = content.playVideo; 
 body.favorite = content.favorite;
+body.onUnload = content.onUnload;
+
+var commenttimer=null;
+
 Page(body)
