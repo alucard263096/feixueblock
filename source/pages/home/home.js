@@ -13,7 +13,7 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
 
-    this.Base.setMyData({ currenttab: 3});
+    this.Base.setMyData({ currenttab: 4});
 
 
   }
@@ -40,7 +40,7 @@ class Content extends AppBase {
       case 1: this.load1(); break;
       case 2: this.load2(); break;
       case 3: this.load3(); break;
-      case 4: break;
+      case 4: this.load4(); break;
     }
   }
   load1(){
@@ -71,6 +71,13 @@ class Content extends AppBase {
       this.Base.setMyData({ hotrank });
     });
   }
+  load4() {
+    var that = this;
+    var instapi = new InstApi();
+    instapi.categories({}, (categories) => {
+      that.Base.setMyData({ categories });
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -81,5 +88,6 @@ body.changeTab = content.changeTab;
 body.load1 = content.load1;
 body.load2 = content.load2;
 body.load3 = content.load3;
+body.load4 = content.load4;
 body.loaddata = content.loaddata;
 Page(body)

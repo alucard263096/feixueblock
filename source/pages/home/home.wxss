@@ -41,3 +41,25 @@
   font-size: 24rpx;
   padding:10rpx;
 }
+.cat-block{
+  background:white;
+  width: 290rpx;
+  margin-right: 30rpx;
+  margin-top:20rpx;
+  border-radius: 10rpx;
+  padding:20rpx;
+}
+.cat-block image{
+  height:100rpx;
+  width:100rpx;
+  border-radius: 50rpx;
+}
+.cat-block .title{
+  font-size: 30rpx;
+  color:black;
+}
+.cat-block .description{
+  margin-top:10rpx;
+  font-size: 24rpx;
+  color:#333;
+}

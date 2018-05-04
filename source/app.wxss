@@ -123,3 +123,10 @@ button.button-hover[type=primary]{
   margin-top: 8rpx;
   color:#999;
 }
+.inbottomla{
+  text-align: center;
+  font-size: 24rpx;
+  padding:10rpx;
+  margin-bottom: 20rpx;
+  color:#999;
+}

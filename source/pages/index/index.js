@@ -13,11 +13,8 @@ class Content extends AppBase {
   }
   onShow() {
     var that = this;
-    if (that.Base.SuperShowed != true) {
-      super.onShow();
-    }
-    if (that.Base.SuperShowed == true) {
-
+    if (super.onShow() == true) {
+      
     }
   }
 

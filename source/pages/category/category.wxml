@@ -1,0 +1,73 @@
+<!--pages/category/category.wxml-->
+<view class='flex-row tabs'>
+  <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
+    <view class='flex-1'></view>
+    <view class='tabtext {{currenttab==0?"active":""}}'>最新发布</view>
+    <view class='flex-1'></view>
+  </view>
+
+  <view class='flex-1 tab flex-row ' bindtap='changeTab' id="1">
+    <view class='flex-1'></view>
+    <view class='tabtext {{currenttab==1?"active":""}}'>最受欢迎</view>
+    <view class='flex-1'></view>
+  </view>
+</view>
+
+<swiper indicator-dots="{{false}}" class='bottomtabs ' current='{{currenttab}}' bindchange="changeCurrentTab" class="maintab">
+  <swiper-item>
+    <scroll-view scroll-y style='height:100%'>
+
+      <view class='white-block'>
+        <navigator url='/pages/livemeeting/livemeeting?id={{item.id}}' wx:for="{{latest}}" wx:key="k" class='flex-row rowitem'>
+          <view>
+            <image src='{{uploadpath}}livemeeting/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+          </view>
+          <view class='flex-1'>
+            <view class='headtitle'>{{item.title}}</view>
+            <view class='headdescription'>
+              {{item.hostername}}，{{item.hosterintroduce}}
+            </view>
+            <view class='headdescription'>
+              发布时间：{{item.start_date}}
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+      <view class='inbottomla' wx:if="{{latest.length>7}}">
+        到底啦
+      </view>
+    </scroll-view>
+
+  </swiper-item>
+  <swiper-item>
+
+
+    <scroll-view scroll-y style='height:100%'>
+
+      <view class='white-block'>
+        <navigator url='/pages/livemeeting/livemeeting?id={{item.id}}' wx:for="{{hotest}}" wx:key="k" class='flex-row rowitem'>
+          <view>
+            <image src='{{uploadpath}}livemeeting/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+          </view>
+          <view class='flex-1'>
+            <view class='headtitle'>{{item.title}}</view>
+            <view class='headdescription'>
+              {{item.hostername}}，{{item.hosterintroduce}}
+            </view>
+            <view class='headdescription'>
+              热门点数：{{item.hotpoint}}
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view class='inbottomla' wx:if="{{hotest.length>7}}">
+        到底啦
+      </view>
+
+    </scroll-view>
+
+
+
+  </swiper-item>
+</swiper>
