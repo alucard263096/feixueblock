@@ -34,10 +34,28 @@
 
 <swiper indicator-dots="{{false}}" class='bottomtabs ' current='{{currenttab}}' bindchange="changeCurrentTab" class="maintab">
   <swiper-item>
-
-
-
-
+    <scroll-view scroll-y style='height:100%'>
+      <block wx:for="{{foreshow}}" wx:key="k">
+        <navigator url='/pages/livemeeting/livemeeting?id={{item.id}}' class='foreshow-item'>
+          <view class='reminder flex-row'>
+            <view>
+              <image src='{{uploadpath}}resource/clock.png'></image>
+            </view>
+            <view wx:if="{{item.livingstatus=='A'}}">
+              {{item.start_date_reminder}}
+            </view>
+            <view wx:if="{{item.livingstatus=='B'}}">
+              直播进行中
+            </view>
+          </view>
+          <image mode='aspectFill' src='{{uploadpath}}livemeeting/{{item.cover}}'></image>
+          <view class='title'>{{item.title}}</view>
+        </navigator>
+      </block>
+      <view class='inbottomla' wx:if="{{foreshow.length>3}}">
+        到底啦
+      </view>
+    </scroll-view>
 
   </swiper-item>
   <swiper-item>
@@ -64,12 +82,15 @@
       <view class='subbar flex-row'>
         <view class='firsttab'></view>
         <view class='secondtab'>热门推荐</view>
-        <view class='thirdtab flex-1 text-right'>更多</view>
+        <view class='thirdtab flex-1 text-right'></view>
       </view>
       <view class='white-block'>
         <navigator url='/pages/livemeeting/livemeeting?id={{item.id}}' wx:for="{{recommlivemeeting}}" wx:key="k" class='flex-row rowitem'>
           <view>
             <image src='{{uploadpath}}livemeeting/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+              <view class='play'>
+                <view class='playicon'></view>
+              </view>
           </view>
           <view class='flex-1'>
             <view class='headtitle'>{{item.title}}</view>
@@ -77,7 +98,7 @@
               {{item.hostername}}，{{item.hosterintroduce}}
             </view>
             <view class='headdescription'>
-              发布时间：{{item.start_date}}
+              发布时间：{{item.start_date_formatting}}
             </view>
           </view>
         </navigator>
@@ -87,7 +108,7 @@
         <view class='subbar flex-row'>
           <view class='firsttab'></view>
           <view class='secondtab'>{{item.name}}</view>
-          <view class='thirdtab flex-1 text-right'>更多</view>
+          <navigator url="/pages/category/category?id={{item.id}}&title={{item.name}}" class='thirdtab flex-1 text-right'>更多</navigator>
         </view>
         <view class='blockrow flex-row'>
           <navigator url='/pages/livemeeting/livemeeting?id={{item.id}}' class='blockitem' wx:for="{{item.recommlivemeeting}}" wx:key="k2">
@@ -122,6 +143,9 @@
           <navigator url='/pages/livemeeting/livemeeting?id={{item.id}}' wx:for="{{item}}" wx:key="k" class='flex-row rowitem'>
             <view>
               <image src='{{uploadpath}}livemeeting/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+              <view class='play'>
+                <view class='playicon'></view>
+              </view>
             </view>
             <view class='flex-1'>
               <view class='headtitle'>{{item.title}}</view>
@@ -167,6 +191,9 @@
         <navigator url='/pages/livemeeting/livemeeting?id={{item.id}}' wx:for="{{hotrank}}" wx:key="k" class='flex-row rowitem'>
           <view>
             <image src='{{uploadpath}}livemeeting/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+              <view class='play'>
+                <view class='playicon'></view>
+              </view>
           </view>
           <view class='flex-1'>
             <view class='headtitle'>{{item.title}}</view>

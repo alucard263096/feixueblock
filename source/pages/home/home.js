@@ -13,9 +13,24 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
 
-    this.Base.setMyData({ currenttab: 4});
-
-
+    this.Base.setMyData({ currenttab: 1});
+    //this.load0();
+    //this.load1();
+    //this.load2();
+    //this.load3();
+    //this.load4();
+    var that=this;
+    setInterval(function(){
+      var foreshow = that.Base.getMyData().foreshow;
+      if(foreshow!=undefined){
+        for (var i = 0; i < foreshow.length;i++){
+          if(foreshow[i].livingstatus=='A'){
+            foreshow[i].start_date_reminder = that.Base.util.DatetimeReminderStr(foreshow[i].start_date_timespan);
+          }
+        }
+        that.Base.setMyData({ foreshow});
+      }
+    },1000);
   }
   onShow() {
     var that = this;
@@ -36,12 +51,19 @@ class Content extends AppBase {
   loaddata(){
     console.log(this.Base.getMyData().currenttab);
     switch (this.Base.getMyData().currenttab) {
-      case 0: break;
+      case 0: this.load0(); break;
       case 1: this.load1(); break;
       case 2: this.load2(); break;
       case 3: this.load3(); break;
       case 4: this.load4(); break;
     }
+  }
+  load0() {
+    var that = this;
+    var api = new LivemeetingApi();
+    api.foreshow({}, (foreshow) => {
+      this.Base.setMyData({ foreshow });
+    });
   }
   load1(){
     var that=this;
@@ -85,6 +107,7 @@ body.onLoad = content.onLoad;
 body.onShow = content.onShow;
 body.changeCurrentTab = content.changeCurrentTab;
 body.changeTab = content.changeTab;
+body.load0 = content.load0;
 body.load1 = content.load1;
 body.load2 = content.load2;
 body.load3 = content.load3;

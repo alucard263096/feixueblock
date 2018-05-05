@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/search/search",
     "pages/category/category",
     "pages/service/service",
     "pages/aboutus/aboutus",
@@ -33,16 +34,16 @@
         "selectedIconPath": "images/icons/home-a.png"
       },
       {
+        "text": "搜索",
+        "pagePath": "pages/search/search",
+        "iconPath": "images/icons/search.png",
+        "selectedIconPath": "images/icons/search-a.png"
+      },
+      {
         "text": "服务",
         "pagePath": "pages/service/service",
         "iconPath": "images/icons/service.png",
         "selectedIconPath": "images/icons/service-a.png"
-      },
-      {
-        "text": "关于我们",
-        "pagePath": "pages/aboutus/aboutus",
-        "iconPath": "images/icons/link.png",
-        "selectedIconPath": "images/icons/link-a.png"
       },
       {
         "text": "我的",

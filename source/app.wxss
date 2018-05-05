@@ -75,6 +75,7 @@ button.button-hover[type=primary]{
   height: 120rpx;
   width: 120rpx;
   box-shadow: 2rpx 2rpx 1rpx #888888;
+  border-radius: 4rpx;
 }
 .rowitem .headtitle{
   padding-left:20rpx;
@@ -99,6 +100,25 @@ button.button-hover[type=primary]{
   color:#999;
 }
 
+.rowitem .play{
+  height: 40rpx;
+  width:40rpx;
+  background-color:rgba(255, 255, 255, 0.5);
+  position: absolute;
+  margin-top: -60rpx;
+  margin-left: 10rpx;
+  border-radius: 20rpx;
+}
+.rowitem .playicon{
+width: 0; 
+height: 0; 
+border-top: 10rpx solid transparent; 
+border-left: 20rpx solid #BF8436; 
+border-bottom: 10rpx solid transparent; 
+margin-left: 12rpx;
+margin-top: 10rpx;
+}
+
 .blockrow{
  padding:15rpx; 
  border-bottom:2rpx solid #f2f2f2;
@@ -112,6 +132,7 @@ button.button-hover[type=primary]{
   height: 180rpx;
   width: 180rpx;
   box-shadow: 2rpx 2rpx 1rpx #888888;
+  border-radius: 4rpx;
 }
 .blockitem .headtitle{
   color:black;
