@@ -1,0 +1,11 @@
+/* pages/servicedetail/servicedetail.wxss */
+view{
+  font-size: 28rpx;
+}
+
+.openkefu{
+  border-radius: 0rpx;
+  position: fixed;
+  bottom: 0rpx;
+  width: 750rpx;
+}

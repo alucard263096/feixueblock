@@ -81,6 +81,24 @@
 .weui-search-bar__cancel-btn {
   margin-left: 10px;
   line-height: 28px;
+  font-size: 24rpx;
   color: #BF8436;
   white-space: nowrap;
+}
+.keywordtitle{
+  font-size: 28rpx;
+  color:black;
+  padding:20rpx;
+}
+
+.keyword{
+  background: white;
+  font-size: 24rpx;
+  border-radius: 35rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-top: 10rpx;
+  margin-right: 10rpx;
 }

@@ -87,12 +87,17 @@ export class ApiUtil {
       return (timespan / (30 * 24 * 3600)).toFixed(0) + "月后";
     } else if (timespan > 24 * 3600) {
       return (timespan / (24 * 3600)).toFixed(0) + "天后";
-    } else if (timespan > 3600) {
-      return (timespan / 3600).toFixed(0) + "小时后";
-    } else if (timespan > 60) {
-      return (timespan / 60).toFixed(0) + "分钟后";
-    } else if (timespan) {
-      return (timespan).toFixed(0) + "秒后";
+    } else  {
+      var hour = timespan / 3600;
+      hour = Number(hour.toFixed(0));
+      timespan = timespan - 3600 * hour;
+      var minute = timespan / 60;
+      minute = Number(minute.toFixed(0));
+      var second = timespan - 60 * minute;
+      second = Number(second.toFixed(0));
+      return hour.toString() 
+      + " : " + (minute < 10 ? "0" + minute.toString() : minute.toString() )
+          + " : " + (second < 10 ? "0" + second.toString() : second.toString())
     }
     return "进行中";
   }
