@@ -66,7 +66,7 @@
 .foreshow-item{
   padding-left: 30rpx;
   padding-right: 30rpx;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
 }
 .foreshow-item image{
   width:690rpx;

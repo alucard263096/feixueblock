@@ -88,12 +88,12 @@ export class ApiUtil {
     } else if (timespan > 24 * 3600) {
       return (timespan / (24 * 3600)).toFixed(0) + "天后";
     } else  {
-      var hour = timespan / 3600;
+      var hour = Math.floor(timespan / 3600);
       hour = Number(hour.toFixed(0));
       timespan = timespan - 3600 * hour;
-      var minute = timespan / 60;
+      var minute = Math.floor(timespan / 60);
       minute = Number(minute.toFixed(0));
-      var second = timespan - 60 * minute;
+      var second = Math.floor(timespan - 60 * minute);
       second = Number(second.toFixed(0));
       return hour.toString() 
       + " : " + (minute < 10 ? "0" + minute.toString() : minute.toString() )
