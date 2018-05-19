@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/livemeeting/livemeeting",
+    "pages/browsehistory/browsehistory",
+    "pages/favorite/favorite",
+    "pages/member/member",
+    "pages/content/content",
+    "pages/webview/webview",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "链视零距离",
+    "navigationBarTextStyle": "black"
+  }
+}
