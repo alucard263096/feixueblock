@@ -18,7 +18,18 @@
 </view>
   <view style='height:95rpx;'></view>
   <block wx:if="{{inputVal==''}}">
-
+    <block wx:if="{{history.length>0}}">
+      <view class='keywordtitle'>历史搜索</view>
+      <view class='flex-row' style='flex-wrap: wrap;padding-left:30rpx;'>
+        <view wx:for="{{history}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
+      </view>
+    </block>
+    <block wx:if="{{hotest.length>0}}">
+      <view class='keywordtitle' style='margin-top:40rpx;'>历史搜索</view>
+      <view class='flex-row' style='flex-wrap: wrap;padding-left:30rpx;'>
+        <view wx:for="{{hotest}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
+      </view>
+    </block>
   </block>
   <block wx:else>
     <view>

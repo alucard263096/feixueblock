@@ -1,1 +1,22 @@
 /* pages/service/service.wxss */
+.topcliass{
+  height: 2rpx;
+  background: #cdcdcd;
+  margin-top:30rpx;
+}
+.righticon{
+  width: 40rpx;
+  height: 40rpx;
+}
+.serviceitem{
+  background: white;
+  border-bottom:2rpx solid #cdcdcd;
+  font-size: 32rpx;
+  color:black;
+  padding:20rpx;
+}
+.icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}

@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/service/service",
+    "pages/servicedetail/servicedetail",
     "pages/search/search",
     "pages/category/category",
-    "pages/service/service",
     "pages/aboutus/aboutus",
     "pages/livemeeting/livemeeting",
     "pages/browsehistory/browsehistory",

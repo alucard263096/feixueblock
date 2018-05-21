@@ -2,6 +2,7 @@
 import { AppBase } from "../../app/AppBase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { LivemeetingApi } from '../../apis/livemeeting.api';
+import { InstApi } from '../../apis/inst.api';
 
 class Content extends AppBase {
   constructor() {
@@ -19,7 +20,11 @@ class Content extends AppBase {
   onShow() {
     var that = this;
     if (super.onShow() == true) {
-
+      var instapi = new InstApi();
+      instapi.searchkeyword({},(ret)=>{
+        that.Base.setMyData({ history: ret.history, hotest: ret.hotest});
+      });
+      
     }
   }
 
@@ -52,6 +57,13 @@ class Content extends AppBase {
       this.Base.setMyData({ searchresult});
     });
   }
+  searchKeyword(e){
+    var val=e.currentTarget.id;
+    this.Base.setMyData({
+      inputVal: val, inputShowed: true
+    });
+    this.search();
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -60,6 +72,7 @@ body.onShow = content.onShow;
 body.showInput = content.showInput;
 body.hideInput = content.hideInput;
 body.clearInput = content.clearInput; 
-body.inputTyping = content.inputTyping;
+body.inputTyping = content.inputTyping; 
 body.search = content.search;
+body.searchKeyword = content.searchKeyword;
 Page(body)

@@ -18,5 +18,6 @@
 
 <view class='white-block block' style='margin-top:40rpx;'>
 <button open-type="contact" class='contactbutton'>联系客服</button>
-<navigator url='/pages/content/content?keycode=instruction&title=个人中心'  class='item'>关于我们</navigator>
+<navigator url='/pages/content/content?keycode=instruction&title=个人中心'  class='item item-split'>关于我们</navigator>
+<navigator open-type='switchTab' url='/pages/home/home'  class='item'>回到首页</navigator>
 </view>
