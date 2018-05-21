@@ -1,4 +1,5 @@
 /* pages/livemeeting/livemeeting.wxss */
+
 .trailer{
   background: black;
   width: 100vw;
@@ -20,6 +21,7 @@
   font-size: 28rpx;
   color:black;
   margin-top: 6rpx;
+  height: 40rpx;
 }
 .hosterintroduce{
   font-size: 20rpx;
@@ -31,24 +33,25 @@
   margin-top: 6rpx;
 }
 .bottomtabs{
-  height:calc( 100vh - 712rpx );
+  height:calc( 100vh - 564rpx );
 }
 .bottomtabsmorertmp{
-  height:calc( 100vh - 712rpx - 13.6vw );
+  height:calc( 100vh - 564rpx - 13.6vw );
 }
 .introducepic{
   width: 100vw;
 }
 .tabs{
   /*box-shadow: 0rpx 4rpx 4rpx #888888;*/
+  background-color:white;
 }
 .tab{
   text-align: center;
-  font-size: 22rpx;
+  font-size: 26rpx;
 }
 .tab .tabtext{
-  padding-top:8rpx;
-  padding-bottom:8rpx;
+  padding-top:12rpx;
+  padding-bottom:12rpx;
 }
 .tab .active{
   border-bottom: 6rpx solid #BF8436;

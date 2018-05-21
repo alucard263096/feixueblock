@@ -1,9 +1,15 @@
 {
   "pages": [
     "pages/livemeeting/livemeeting",
+    "pages/home/home",
+    "pages/search/search",
+    "pages/category/category",
+    "pages/service/service",
+    "pages/aboutus/aboutus",
     "pages/browsehistory/browsehistory",
     "pages/favorite/favorite",
     "pages/member/member",
+    "pages/memberinfo/memberinfo",
     "pages/content/content",
     "pages/webview/webview",
     "pages/index/index",
@@ -12,7 +18,39 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "链视零距离",
+    "navigationBarTitleText": "链圈零距离",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "selectedColor": "#BF8436",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "项目",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-a.png"
+      },
+      {
+        "text": "搜索",
+        "pagePath": "pages/search/search",
+        "iconPath": "images/icons/search.png",
+        "selectedIconPath": "images/icons/search-a.png"
+      },
+      {
+        "text": "服务",
+        "pagePath": "pages/service/service",
+        "iconPath": "images/icons/service.png",
+        "selectedIconPath": "images/icons/service-a.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/memberinfo/memberinfo",
+        "iconPath": "images/icons/user.png",
+        "selectedIconPath": "images/icons/user-a.png"
+      }
+    ]
   }
 }

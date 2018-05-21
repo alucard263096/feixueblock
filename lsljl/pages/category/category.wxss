@@ -1,0 +1,22 @@
+/* pages/category/category.wxss */
+
+.tabs{
+  box-shadow: 0rpx 2rpx 2rpx #f2f2f2;
+  background: white;
+  margin-bottom: 2rpx;
+}
+.tab{
+  text-align: center;
+  font-size: 32rpx;
+}
+.tab .tabtext{
+  padding-top:18rpx;
+  padding-bottom:18rpx;
+}
+.tab .active{
+  border-bottom: 6rpx solid #BF8436;
+  color:#BF8436;
+}
+.maintab{
+  height:calc( 100vh - 86rpx );
+}

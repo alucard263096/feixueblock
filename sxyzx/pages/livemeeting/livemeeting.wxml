@@ -51,7 +51,25 @@
     <view wx:if="{{info.livingstatus=='C'}}" style='line-height:0rpx;'>
       <video id="myVideo" class='trailer' src="{{uploadpath}}livemeeting/{{currentvideo.video}}" poster="{{uploadpath}}livemeeting/{{currentvideo.cover}}" controls></video>
     </view>
-    <view class='flex-row hosterinfo {{info.livingstatus=="B"&&info.rtmps.length>1?"hosterinfomorertmp":""}}'>
+    
+    <view wx:if="{{info.livingstatus=='A'}}">
+      <view class='flex-row tabs'>
+        <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
+          <view class='flex-1'></view>
+          <view class='tabtext {{currenttab==0?"active":""}}'>简介</view>
+          <view class='flex-1'></view>
+        </view>
+        <view class='flex-1 tab flex-row ' bindtap='changeTab' id="1">
+          <view class='flex-1'></view>
+          <view class='tabtext {{currenttab==1?"active":""}}'>互动聊天({{commentcount}})</view>
+          <view class='flex-1'></view>
+        </view>
+      </view>
+      <swiper indicator-dots="{{false}}" class='bottomtabs {{info.livingstatus=="B"&&info.rtmps.length>1?"bottomtabsmorertmp":""}}' current='{{currenttab}}' bindchange="changeCurrentTab">
+        <swiper-item>
+          <scroll-view scroll-y="{{true}}" style='height:100%;line-height:0rpx;'>
+          
+          <view class='flex-row hosterinfo {{info.livingstatus=="B"&&info.rtmps.length>1?"hosterinfomorertmp":""}}'>
       <view style='line-height:0rpx;'>
         <image class='hosterphoto' src="{{uploadpath}}livemeeting/{{info.hosterphoto}}"></image>
       </view>
@@ -70,22 +88,6 @@
         <button wx:if="{{info.favorited==true}}" type='primary' size='mini' class='hosterfocus'  bindtap='favorite' >已关注</button>
       </view>
     </view>
-    <view wx:if="{{info.livingstatus=='A'}}">
-      <view class='flex-row tabs'>
-        <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
-          <view class='flex-1'></view>
-          <view class='tabtext {{currenttab==0?"active":""}}'>活动介绍</view>
-          <view class='flex-1'></view>
-        </view>
-        <view class='flex-1 tab flex-row ' bindtap='changeTab' id="1">
-          <view class='flex-1'></view>
-          <view class='tabtext {{currenttab==1?"active":""}}'>互动聊天({{commentcount}})</view>
-          <view class='flex-1'></view>
-        </view>
-      </view>
-      <swiper indicator-dots="{{false}}" class='bottomtabs {{info.livingstatus=="B"&&info.rtmps.length>1?"bottomtabsmorertmp":""}}' current='{{currenttab}}' bindchange="changeCurrentTab">
-        <swiper-item>
-          <scroll-view scroll-y="{{true}}" style='height:100%;line-height:0rpx;'>
             <image src="{{uploadpath}}livemeeting/{{info.introducepic}}" class='introducepic' mode='widthFix' bindtap='viewPhoto' id="{{uploadpath}}livemeeting/{{info.introducepic}}"></image>
           </scroll-view>
         </swiper-item>
@@ -123,7 +125,7 @@
         </view>
         <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="1">
           <view class='flex-1'></view>
-          <view class='tabtext {{currenttab==1?"active":""}}'>活动介绍</view>
+          <view class='tabtext {{currenttab==1?"active":""}}'>简介</view>
           <view class='flex-1'></view>
         </view>
       </view>
@@ -152,6 +154,25 @@
         </swiper-item>
         <swiper-item>
           <scroll-view scroll-y="{{true}}" style='height:100%;line-height:0rpx;'>
+          <view class='flex-row hosterinfo {{info.livingstatus=="B"&&info.rtmps.length>1?"hosterinfomorertmp":""}}'>
+      <view style='line-height:0rpx;'>
+        <image class='hosterphoto' src="{{uploadpath}}livemeeting/{{info.hosterphoto}}"></image>
+      </view>
+      <view style='margin-left:30rpx;' class='flex-1'>
+        <view class='hostername'>{{info.hostername}}</view>
+        <view class='hosterintroduce'>{{info.hosterintroduce}}</view>
+      </view>
+      <view wx:if="{{info.livingstatus=='A'}}">
+        <form bindsubmit="sendNotify" wx:if="{{info.notifyme==false}}" report-submit>
+          <button type='primary' size='mini' class='hosterfocus' formType="submit">设置提醒</button>
+        </form>
+        <button wx:if="{{info.notifyme==true}}" type='default' size='mini' class='hosterfocus'>等待提醒</button>
+      </view>
+      <view wx:if="{{info.livingstatus=='B'||info.livingstatus=='C'}}">
+          <button type='default' size='mini'  wx:if="{{info.favorited==false}}"  class='hosterfocus' bindtap='favorite' >+关注</button>
+        <button wx:if="{{info.favorited==true}}" type='primary' size='mini' class='hosterfocus'  bindtap='favorite' >已关注</button>
+      </view>
+    </view>
             <image src="{{uploadpath}}livemeeting/{{info.introducepic}}" class='introducepic' mode='widthFix' bindtap='viewPhoto' id="{{uploadpath}}livemeeting/{{info.introducepic}}"></image>
           </scroll-view>
         </swiper-item>
@@ -174,7 +195,7 @@
         </view>
         <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="2">
           <view class='flex-1'></view>
-          <view class='tabtext {{currenttab==2?"active":""}}'>活动介绍</view>
+          <view class='tabtext {{currenttab==2?"active":""}}'>简介</view>
           <view class='flex-1'></view>
         </view>
       </view>
@@ -227,6 +248,25 @@
           </form>
         </swiper-item>
         <swiper-item>
+        <view class='flex-row hosterinfo {{info.livingstatus=="B"&&info.rtmps.length>1?"hosterinfomorertmp":""}}'>
+      <view style='line-height:0rpx;'>
+        <image class='hosterphoto' src="{{uploadpath}}livemeeting/{{info.hosterphoto}}"></image>
+      </view>
+      <view style='margin-left:30rpx;' class='flex-1'>
+        <view class='hostername'>{{info.hostername}}</view>
+        <view class='hosterintroduce'>{{info.hosterintroduce}}</view>
+      </view>
+      <view wx:if="{{info.livingstatus=='A'}}">
+        <form bindsubmit="sendNotify" wx:if="{{info.notifyme==false}}" report-submit>
+          <button type='primary' size='mini' class='hosterfocus' formType="submit">设置提醒</button>
+        </form>
+        <button wx:if="{{info.notifyme==true}}" type='default' size='mini' class='hosterfocus'>等待提醒</button>
+      </view>
+      <view wx:if="{{info.livingstatus=='B'||info.livingstatus=='C'}}">
+          <button type='default' size='mini'  wx:if="{{info.favorited==false}}"  class='hosterfocus' bindtap='favorite' >+关注</button>
+        <button wx:if="{{info.favorited==true}}" type='primary' size='mini' class='hosterfocus'  bindtap='favorite' >已关注</button>
+      </view>
+    </view>
           <scroll-view scroll-y="{{true}}" style='height:100%;line-height:0rpx;'>
             <image src="{{uploadpath}}livemeeting/{{info.introducepic}}" class='introducepic' mode='widthFix' bindtap='viewPhoto' id="{{uploadpath}}livemeeting/{{info.introducepic}}"></image>
           </scroll-view>

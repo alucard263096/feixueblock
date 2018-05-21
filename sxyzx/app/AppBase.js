@@ -10,7 +10,7 @@ export class AppBase {
   options = null;
   data = {
     uploadpath: ApiConfig.GetUploadPath(),
-    copyright: { name: "商学院在线", website: "mecloud.com" }
+    copyright: { name: "评测题库", website: "mecloud.com" }
   };
   Page = null;
   util = ApiUtil;
@@ -143,6 +143,7 @@ export class AppBase {
 
                 console.log(AppBase.UserInfo);
                 that.Base.setMyData({ UserInfo: AppBase.UserInfo });
+                that.Base.SuperShowed=true;
                 that.onShow();
               });
             },
@@ -153,6 +154,7 @@ export class AppBase {
 
         }
       })
+      return false;
     } else {
       if (that.setMyData != undefined) {
         that.setMyData({ UserInfo: AppBase.UserInfo });
@@ -161,6 +163,7 @@ export class AppBase {
       }
     }
     this.Base.getAddress();
+    return true;
   }
   onHide() {
     console.log("onHide");
