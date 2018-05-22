@@ -3,6 +3,8 @@
     "pages/home/home",
     "pages/service/service",
     "pages/servicedetail/servicedetail",
+    "pages/activity/activity",
+    "pages/activitylist/activitylist",
     "pages/search/search",
     "pages/category/category",
     "pages/aboutus/aboutus",
@@ -39,6 +41,12 @@
         "pagePath": "pages/search/search",
         "iconPath": "images/icons/search.png",
         "selectedIconPath": "images/icons/search-a.png"
+      },
+      {
+        "text": "活动",
+        "pagePath": "pages/activitylist/activitylist",
+        "iconPath": "images/icons/activity.png",
+        "selectedIconPath": "images/icons/activity-a.png"
       },
       {
         "text": "服务",
