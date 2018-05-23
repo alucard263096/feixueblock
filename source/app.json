@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/activitybuyinfo/activitybuyinfo",
+    "pages/activitybuyticket/activitybuyticket",
+    "pages/signup/signup",
+    "pages/activity/activity",
     "pages/activitylist/activitylist",
     "pages/home/home",
     "pages/service/service",
     "pages/servicedetail/servicedetail",
-    "pages/activity/activity",
     "pages/search/search",
     "pages/category/category",
     "pages/aboutus/aboutus",

@@ -141,6 +141,7 @@ export class AppBase {
                 console.log("goto update info");
                 memberapi.update(AppBase.UserInfo);
 
+
                 console.log(AppBase.UserInfo);
                 that.Base.setMyData({ UserInfo: AppBase.UserInfo });
                 that.Base.SuperShowed=true;
@@ -591,5 +592,17 @@ export class AppBase {
   }
   closePage() {
 
+  }
+  checkRealname(callback){
+    var memberapi=new MemberApi();
+    memberapi.checkrealname({},(ret)=>{
+      if(ret==false){
+        wx.navigateTo({
+          url: '/pages/signup/signup',
+        })
+      }else{
+        callback();
+      }
+    });
   }
 } 

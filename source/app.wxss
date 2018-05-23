@@ -154,3 +154,9 @@ margin-top: 10rpx;
 .navigator-hover{
   background: transparent;
 }
+.fullimg{
+  width: 100%;
+}
+.padding-20{
+  padding:20rpx;
+}

@@ -9,7 +9,7 @@
       {{item.name}}
     </view>
     <view class='flex-row' style='font-size:24rpx;margin-top:10rpx;'>
-      <view class='flex-1'>{{item.start_date}}</view>
+      <view class='flex-1'>{{item.datedesc}}</view>
       <view class='flex-1 font-primary text-right'>{{item.pricedesc}}</view>
     </view>
   </view>
