@@ -10,8 +10,8 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    options.ticket_id=1;
-    options.ticket_buycount=3;
+    //options.ticket_id=1;
+    //options.ticket_buycount=3;
     super.onLoad(options);
     wx.hideShareMenu({
       
@@ -58,7 +58,14 @@ class Content extends AppBase {
       var api = new ActivityApi();
       api.submitticket(json, (ret) => {
         if(ret.code==0){
-          
+          var pages = getCurrentPages();
+          var prevPage = pages[pages.length - 1];  //当前界面
+          var prevPage = pages[pages.length - 2];  //上一个页面
+          var that = this
+          prevPage.setData({
+            order_id: ret.return
+          });
+          wx.navigateBack({});
         }else{
           that.Base.info(ret.return);
         }

@@ -8,10 +8,9 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id=1;
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({totalamount:0.00});
+    this.Base.setMyData({totalamount:0.00,order_id:0});
     var api = new ActivityApi();
     api.info({ id: this.Base.options.id }, (info) => {
       for (var i = 0; i < info.ticketlevels.length; i++) {
@@ -26,7 +25,12 @@ class Content extends AppBase {
   onShow() {
     var that = this;
     if (super.onShow() == true) {
-      
+      var order_id = this.Base.getMyData().order_id;
+      if(order_id>0){
+        wx.navigateTo({
+          url: '/pages/activityorder/activityorder?id='+order_id.toString(),
+        })
+      }
     }
   }
 

@@ -15,6 +15,9 @@
 </view>
 </view>
 
+<view class='white-block block' style='margin-top:40rpx;'>
+<navigator url='/pages/activityorderlist/activityorderlist'  class='item item-split'>订票信息</navigator>
+</view>
 
 <view class='white-block block' style='margin-top:40rpx;'>
 <button open-type="contact" class='contactbutton'>联系客服</button>
