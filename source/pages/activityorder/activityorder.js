@@ -2,13 +2,14 @@
 import { AppBase } from "../../app/AppBase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { ActivityApi } from '../../apis/activity.api';
+import { WechatApi } from "../../apis/wechat.api";
 
 class Content extends AppBase {
   constructor() {
     super();
   }
   onLoad(options) {
-    options.id = 1;
+    options.id = 4;
     this.Base.Page = this;
     super.onLoad(options);
     
@@ -20,22 +21,46 @@ class Content extends AppBase {
     var that = this;
     if (super.onShow() == true) {
       var api=new ActivityApi();
-      api.ticketorder({id:this.Base.options.order_id},(info)=>{
-        this.Base.setMyData(info);
+      api.ticketorder({ id: that.Base.options.id},(order)=>{
+        this.Base.setMyData(order);
       });
     }
   }
 
-
+  gotoBuy(){
+    var that = this;
+    var wechatApi = new WechatApi();
+    console.log(this.Base.options.id);
+    wechatApi.prepay({ id: this.Base.options.id }, function (data) {
+      if (data.code == 0) {
+        wx.requestPayment({
+          'timeStamp': data.timeStamp,
+          'nonceStr': data.nonceStr,
+          'package': data.package,
+          'signType': data.signType,
+          'paySign': data.paySign,
+          'success': function (res) {
+            console.log("payment success");
+            console.log(res);
+            wx.navigateTo({
+              url: '/pages/success/success',
+            })
+          },
+          'fail': function (res) {
+            console.log("payment fail");
+            console.log(res);
+            that.Base.error(res.err_desc);
+          }
+        })
+      } else {
+        that.Base.error(data.result);
+      }
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onShow = content.onShow;
 body.gotoBuy = content.gotoBuy;
-body.onShareAppMessage = content.onShareAppMessage;
-body.selectTicket = content.selectTicket;
-body.updateBuycount = content.updateBuycount;
-body.countamount = content.countamount;
-body.gotoInfo = content.gotoInfo;
 Page(body)

@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/activityorder/activityorder",
+    "pages/success/success",
     "pages/home/home",
     "pages/activityorderlist/activityorderlist",
-    "pages/activityorder/activityorder",
     "pages/activitybuyinfo/activitybuyinfo",
     "pages/activitybuyticket/activitybuyticket",
     "pages/signup/signup",

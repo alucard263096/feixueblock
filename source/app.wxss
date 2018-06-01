@@ -4,6 +4,7 @@ page{
 }
 view{
   color:#666;
+  font-size: 32rpx;
 }
 .flex-row{
   display: flex;
@@ -19,6 +20,10 @@ view{
 }
 .white-block{
   background-color: white;
+}
+.primary-block{
+  background-color: #BF8436;
+  color: white;
 }
 .black-font{
   color:black;
@@ -117,6 +122,10 @@ border-left: 20rpx solid #BF8436;
 border-bottom: 10rpx solid transparent; 
 margin-left: 12rpx;
 margin-top: 10rpx;
+}
+
+.border-top{
+  margin-top: 4rpx;
 }
 
 .blockrow{

@@ -3,7 +3,7 @@
 <view class='padding-20 white-block'>
   <view class='flex-row '>
     <view >
-      <image class='cover' src='{{uploadpath}}activity/{{cover}}' mode="widthFix"></image>
+      <image class='cover' src='{{uploadpath}}activity/{{cover}}' ></image>
     </view>
     <view class='flex-1' style='margin-left:20rpx;'>
       <view>{{name}}</view>

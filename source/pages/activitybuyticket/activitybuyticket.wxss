@@ -1,6 +1,7 @@
 /* pages/activitybuyticket/activitybuyticket.wxss */
 .cover{
   width:235rpx;
+  height: 140rpx;
 }
 .bottom-price{
   position: absolute;
